@@ -1,4 +1,4 @@
-package com.tensquare.controller;
+package com.tensquare.base.controller;
 
 //Created by Wang .  
 
@@ -7,7 +7,6 @@ import com.tensquare.base.service.LabelService;
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,11 +19,17 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/label")
+//@CrossOrigin//允许跨域访问
 public class LabelController {
 
   @Autowired
   private LabelService labelService;
 
+  @RequestMapping(value = {"/error"},method = RequestMethod.GET)
+  public Result error() {
+    int i = 1/0;
+    return new Result(true, StatusCode.OK, "增加成功");
+  }
   /**
    * 增加
    *
